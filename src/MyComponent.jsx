@@ -5,7 +5,8 @@ function MyComponent() {
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
 
-    addEventListener('resize', handleResize);
+    addEventListener('resize', handleResize); // callback of handleResize will be called when window is resized
+    console.log('Event Listener Added');
 
     function handleResize() {
         setWidth(window.innerWidth);
