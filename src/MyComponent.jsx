@@ -9,11 +9,15 @@ function MyComponent() {
         addEventListener('resize', handleResize); // callback of handleResize will be called when window is resized
         console.log('Event Listener Added');
         return () => {
-            removeEventListener('resize', handleResize); // callback of handleResize will be removed when component is unmounted
+            window.removeEventListener('resize', handleResize); // callback of handleResize will be removed when component is unmounted
             console.log('Event Listener Removed');
         }
 
     }, []); // empty dependency array means this effect will only run once after the first render
+
+    useEffect(() => {
+        document.title = `Size: ${width} x ${height}`; // document title will be updated with the width of the window
+    }, [width, height]); // this effect will run whenever width or height changes
 
     
 
