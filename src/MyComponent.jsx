@@ -5,8 +5,17 @@ function MyComponent() {
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
 
-    addEventListener('resize', handleResize); // callback of handleResize will be called when window is resized
-    console.log('Event Listener Added');
+    useEffect(() => {
+        addEventListener('resize', handleResize); // callback of handleResize will be called when window is resized
+        console.log('Event Listener Added');
+        return () => {
+            removeEventListener('resize', handleResize); // callback of handleResize will be removed when component is unmounted
+            console.log('Event Listener Removed');
+        }
+
+    }, []); // empty dependency array means this effect will only run once after the first render
+
+    
 
     function handleResize() {
         setWidth(window.innerWidth);
