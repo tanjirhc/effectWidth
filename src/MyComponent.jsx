@@ -8,6 +8,7 @@ function MyComponent() {
     return (
         <div>
             <p>Window Width: {width}px</p>
+            <p>Window Height: {height}px</p>
         </div>
     )
 }
